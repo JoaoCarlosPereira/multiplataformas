@@ -655,6 +655,8 @@ drawable common_google_signin_btn_text_light_normal_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable logo_256
+drawable node_modules_reactnavigationstack_src_views_assets_backicon
+drawable node_modules_reactnavigationstack_src_views_assets_backiconmask
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -669,6 +671,11 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable redbox_top_border_background
 drawable splash
+drawable src_img_cadastrar_ativo
+drawable src_img_cadastrar_inativo
+drawable src_img_captura
+drawable src_img_home_ativo
+drawable src_img_home_inativo
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 id ALT
