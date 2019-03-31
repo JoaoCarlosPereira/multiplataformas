@@ -20,17 +20,16 @@ export default class CameraScreen extends Component {
   }
 
   capturarFoto = async () => {
-  // Testar se o objeto da camera foi criado
-  if(this.camera) {
-      // opções de captura
-      const options = {quality: 0.5, base64: true};
+    // testar se o objeto da câmera foi criado
+    if (this.camera) {
+      // opções para captura
+      const options = { quality: 0.5, base64: true };
       // captura da foto
       const data = await this.camera.takePictureAsync(options);
       let state = this.state;
       state.uri = data.uri;
       this.setState(state);
-
-   }
+    }
   }
 
   render() {
@@ -53,19 +52,21 @@ export default class CameraScreen extends Component {
           justifyContent: 'center'
         }}>
           <Button title="Capturar"
-            onPress={() => {this.capturarFoto()}} />
+            onPress={() => this.capturarFoto()} />
         </View>
-        <View style={{ flex: 1.5 }}>
+        <View style={{ flex: 1.5, 
+        justifyContent: 'center', 
+        alignItems: 'center'}}>
           <Image style={{
             borderWidth: 1, borderColor: 'black',
             height: 150, width: 150
           }}
             source={{ uri: this.state.uri }}
           />
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{ flexDirection: 'row'}}>
             <Button title="OK" onPress={
-              () => {this.props.navigation.navigate('Filme',
-                { imguri: this.state.uri })}
+              () => this.props.navigation.navigate('Filme',
+                { imguri: this.state.uri })
             } />
             <Button title="Cancelar" onPress={
               () => this.props.navigation.navigate('Filme')

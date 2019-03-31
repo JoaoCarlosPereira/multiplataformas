@@ -7,8 +7,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import { LPButton } from '../component/LPButton';
-import {openDatabase} from 'react-native-sqlite-storage';
-//criando um objeto para representar o banco de dados
+import { openDatabase } from 'react-native-sqlite-storage';
 var db = openDatabase({ name: 'lapelicula.db' });
 
 export default class FilmeScreen extends Component {
@@ -30,9 +29,13 @@ export default class FilmeScreen extends Component {
 
     // quando o componente foi criado/montado
     componentDidMount() {
-      if (typeof this.props.navigation.state.params !== "undefined") {
-        this.setState({uri: this.props.navigation.state.params.imguri})
-      }
+        if (typeof 
+          this.props.navigation.state.params
+          !== "undefined") {
+            this.setState({uri:
+              this.props.navigation.state.params.imguri
+            });
+          }
     }
 
     constructor(props) {
@@ -45,19 +48,17 @@ export default class FilmeScreen extends Component {
         this.abrirCamera = this.abrirCamera.bind(this);
         this.salvar = this.salvar.bind(this);
     }
-
    
     abrirCamera() {
         this.props.navigation.navigate('Camera');
     }
 
-    salvar() {
-        // insert no banco 
+    salvar() {     
+        // insert no banco
         db.transaction(tx => {
-            tx.executeSql('INSERT INTO filme(descricao, imagem) VALUES(?, ?)', 
-            [this.state.descricao, this.state.uri]);
-        });
-
+          tx.executeSql('INSERT INTO filme(descricao, imagem) VALUES(?, ?)', 
+          [this.state.descricao, this.state.uri]);
+        });  
         this.props.navigation.navigate('Home');
     }
 
@@ -87,7 +88,7 @@ export default class FilmeScreen extends Component {
                     </View>
                     <View style={{ flex: 1 }}>
                         <LPButton titulo='Cancelar'
-                            onPress={() => this.props.navigation.navigate('Home')} />
+                            onPress={() =>this.props.navigation.goBack()} />
                     </View>
                 </View>
             </View >

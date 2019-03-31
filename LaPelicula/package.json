@@ -7,7 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "link": "^0.1.5",
     "react": "16.6.3",
     "react-native": "0.58.6",
     "react-native-camera": "^1.13.1",

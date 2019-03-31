@@ -6,13 +6,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-
 // componente para botão customizado
 export class LPButton extends Component {
     constructor(props) {
       super(props);
       this.state = {};
-  
+
       // estilos
       this.styles = StyleSheet.create({
         botao: {
