@@ -56,7 +56,7 @@ export default class ListaFilmesApiScreen extends Component {
 
   // configurando opções de navegação
   static navigationOptions = ({ navigation }) => ({
-    tabBarLabel: 'Buscar Filme API',
+    tabBarLabel: 'Buscar API',
     tabBarIcon: ({ focused, tintColor }) => {
       if (focused) {
         return (
