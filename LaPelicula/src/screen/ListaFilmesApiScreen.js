@@ -31,44 +31,8 @@ export default class ListaFilmesApiScreen extends Component {
 
   }
 
-  localizar() {
 
-    let url = 'http://www.omdbapi.com/?s=' + this.state.pesquisa + '&apikey=fdd668c6';
 
-    if (this.state.filtro == 'y') {
-      url = 'http://www.omdbapi.com/?s=' + this.state.pesquisa + '&y=' + this.state.pesquisa + '&apikey=fdd668c6';
-    }
-
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'content-type': 'multipart/form-data'
-      }
-    }).then((response) => response.json())
-      .then((responseJson) => {
-
-        let ret = responseJson['Search'] == undefined ? [] : responseJson['Search'];
-        this.setState({ filmes: ret })
-
-      })
-  }
-
-  // configurando opções de navegação
-  static navigationOptions = ({ navigation }) => ({
-    tabBarLabel: 'Buscar API',
-    tabBarIcon: ({ focused, tintColor }) => {
-      if (focused) {
-        return (
-          <Image source={require('../img/cadastrar_ativo.png')} style={{ width: 26, height: 26 }}></Image>
-        );
-      } else {
-        return (
-          <Image source={require('../img/cadastrar_inativo.png')} style={{ width: 26, height: 26 }}></Image>
-        );
-      }
-    }
-  });
 
   render() {
     return (
@@ -88,6 +52,41 @@ export default class ListaFilmesApiScreen extends Component {
     );
   }
 
+  localizar() {
+
+    let endereco = 'http://www.omdbapi.com/?s=' + this.state.pesquisa + '&apikey=fdd668c6';
+
+
+    fetch(endereco, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'content-type': 'multipart/form-data'
+      }
+    }).then((response) => response.json())
+      .then((responseJson) => {
+
+        let ret = responseJson['Search'] == undefined ? [] : responseJson['Search'];
+        this.setState({ filmes: ret })
+
+      })
+  }  
+
+  // configurando opções de navegação
+  static navigationOptions = ({ navigation }) => ({
+    tabBarLabel: 'Buscar API',
+    tabBarIcon: ({ focused, tintColor }) => {
+      if (focused) {
+        return (
+          <Image source={require('../img/cadastrar_ativo.png')} style={{ width: 26, height: 26 }}></Image>
+        );
+      } else {
+        return (
+          <Image source={require('../img/cadastrar_inativo.png')} style={{ width: 26, height: 26 }}></Image>
+        );
+      }
+    }
+  });
 }
 
 const styles = StyleSheet.create({
