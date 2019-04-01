@@ -45,7 +45,7 @@ export default class ListaFilmesApiScreen extends Component {
         <View>
           <LPButton titulo='Localizar' onPress={() => this.localizar()} />
         </View>
-        <View style={{ padding: 15}}>
+        <View style={styles.flatlist}>
           <FlatList data={this.state.filmes} keyExtractor={item => item.Title.toString()} renderItem={({ item }) => <Filmes data={item}></Filmes>}></FlatList>
         </View>
       </View>
@@ -93,6 +93,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F4F4F4'
+  },
+  flatlist: {
+    padding: 15
   },
   text: {
     color: '#000000',
